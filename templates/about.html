@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About || Final</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon.ico') }}" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-center">
+        <div class="nav-header">
+          <a href="index.html" class="nav-logo">
+            <img src="{{ url_for('static', filename='assets/logos.svg') }}" alt="Recipe Fusion" />
+          </a>
+          <button class="nav-btn btn">
+            <i class="fas fa-align-justify"></i>
+          </button>
+        </div>
+        <div class="nav-links">
+          <a href="{{ url_for('index') }}" class="nav-link"> home </a>
+          <a href="{{ url_for('about') }}" class="nav-link"> about </a>
+          <a href="{{ url_for('tags') }}" class="nav-link"> tags </a>
+          <a href="{{ url_for('recipes') }}" class="nav-link"> recipes </a>
+          <form action="{{url_for('recommend_recipe')}}", method="POST">
+            <input type="text" name="recipe_name" placeholder="enter ingredient name or recipe" id="" style="width:300px; height: 30px; text-align: center; margin-left: 4rem; padding-right: 5px; margin-left: 15px; border-radius: 7px;">
+            <input type="submit" value="Enter" style="margin-left: 10px; border-radius: 5px; width: 80px; height: 30px;">
+          </form>
+          <div class="nav-link contact-link">
+            <a href="{{ url_for('login_index') }}" class="btn"> login </a>
+            <a href="{{ url_for('contact') }}"class="btn"> contact </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page">
+      <section class="about-page">
+        <article>
+          <h2>Welcome to Recipe Fusion, where we bring together the magic of food and technology.</h2>
+          <p>
+            Our mission is to make cooking an exciting and delightful experience for everyone, 
+            from seasoned chefs to kitchen novices.
+          </p>
+          <p>
+            Recipe Fusion is designed to provide recipe recommendations and 
+            cooking inspiration.
+          </p>
+          <a href="contact.html" class="btn"> contact </a>
+        </article>
+
+        <img
+          src="static/assets/about.jpeg"
+          alt="Person Pouring Salt in Bowl"
+          class="img about-img"
+        />
+      </section>
+      <section class="featured-recipes">
+        <h5 class="featured-title">Look At This Awesome Recipes!</h5>
+        <div class="recipes-list">
+
+          <a href="single-recipe.html" class="recipe">
+            <img
+              src="static/assets/recipes/recipe-1.jpeg"
+              class="img recipe-img"
+              alt=""
+            />
+            <h5>Carne Asada</h5>
+            <p>Prep : 15min | Cook : 5min</p>
+          </a>
+
+          <a href="single-recipe.html" class="recipe">
+            <img
+              src="static/assets/recipes/recipe-2.jpeg"
+              class="img recipe-img"
+              alt=""
+            />
+            <h5>Chicken curry</h5>
+            <p>Prep : 15min | Cook : 5min</p>
+          </a>
+
+          <a href="single-recipe.html" class="recipe">
+            <img
+              src="static/assets/recipes/recipe-3.jpeg"
+              class="img recipe-img"
+              alt=""
+            />
+            <h5>Vegetable Soup</h5>
+            <p>Prep : 15min | Cook : 5min</p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>
+        &copy; <span id="date"></span>
+        <span class="footer-logo">Recipe Fusion</span> 
+      </p>
+    </footer>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>

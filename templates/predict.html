@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+
+        #output-section {
+            background-color: #fff;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+
+        }
+
+        .form {
+
+        }
+
+        .recipe name {
+
+        }
+
+        .output-section {
+
+        }
+    </style>
+</head>
+<body>
+<form id="form" action="/recommend_recipe" method="post">
+    <label for="Model">Choose a model:</label>
+    <select name="Model" id="Model">
+        <option value="RNN" {% if model == "RNN" %}selected{% endif %}>RNN</option>
+        <option value="CNN" {% if model == "CNN" %}selected{% endif %}>CNN</option>
+    </select>
+    <input type="text" name="recipe_name" id="recipe_name"  value="{{ recipe_name }}" hidden="True">
+    <button type="submit">Submit</button>
+</form>
+
+{% if model == "CNN" %}
+    {% for key, value in recommended_recipe.items() %}
+        <div id="output-section">
+            <h2>Output</h2>
+<!--            <p>-->
+<!--                <div class="hover-element">{{ key }}</div>-->
+<!--                <div class="popup">{{ value }}</div>-->
+<!--            </p>-->
+            <h3 id="recipe name">{{ key }}: </h3>
+            <p>{{ value }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <div id="output-section">
+        <h2>Output</h2>
+        {{ recommended_recipe }}
+    </div>
+{% endif %}
+
+</body>
+<style>
+    .popup {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .hover-element:hover + .popup {
+        display: block;
+    }
+
+</style>
+</html>
